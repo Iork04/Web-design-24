@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap");
+@import "boxicons";
+
+* {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    /* outline: 2px solid red; */
+}
+
+body {
+    background: url(./img/lake-river-valley-stream-rapid-ecosystem-563236-pxhere.com.jpg) no-repeat fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* .fontShadow {
+    text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0),
+        1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
+} */
