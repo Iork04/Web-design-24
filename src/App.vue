@@ -1,4 +1,5 @@
 <template>
+  <rain></rain>
   <shadowCurtain></shadowCurtain>
   <Navigation></Navigation>
   <topContent></topContent>
@@ -10,6 +11,7 @@
 import shadowCurtain from "./components/shadowCurtain.vue";
 import Navigation from "./components/Navigation.vue";
 import topContent from "./components/topContent.vue";
+import rain from "./components/rain.vue";
 
 export default {
   data() {
@@ -21,7 +23,8 @@ export default {
   components: {
     shadowCurtain,
     Navigation,
-    topContent
+    topContent,
+    rain
   }
 }
 

@@ -53,16 +53,16 @@
             display: inline-flex;
             cursor: pointer;
             position: relative;
-            border: 0.25vh solid rgba(0, 0, 0, 0);
+            border: 2px solid rgba(0, 0, 0, 0);
             gap: 10px;
 
             >i {
-                font-size: 40px;
+                font-size: 65px;
             }
 
             &:hover {
                 transition: 0.5s;
-                border: 0.25vh solid black;
+                border: 2px solid black;
                 border-radius: 1vh;
             }
         }
@@ -82,16 +82,16 @@
             display: flex;
 
             >a {
-                font-size: 2vh;
+                font-size: 30px;
                 color: aliceblue;
             }
 
             hr {
                 float: left;
-                height: 1vh;
+                height: 8px;
                 border: 0px;
                 background-color: rgb(139, 179, 179);
-                border-radius: 2vh;
+                border-radius: 10px;
                 width: 1%;
                 opacity: 0;
             }
@@ -125,12 +125,12 @@
     position: fixed;
     bottom: 10%;
     right: 5%;
-    gap: 4vh;
+    gap: 40px;
 
     >span {
         display: inline-flex;
-        width: 6vh;
-        height: 6vh;
+        width: 80px;
+        height: 80px;
         border: 0.3vh solid #fff;
         border-radius: 2vh;
         cursor: pointer;
@@ -138,7 +138,7 @@
         align-items: center;
 
         >i {
-            font-size: 6vh;
+            font-size: 80px;
         }
 
         &:nth-child(1) {

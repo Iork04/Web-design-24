@@ -109,29 +109,29 @@ export default {
 
         .topContentLeftInfo {
 
-            font-size: 2vh;
+            font-size: 25px;
             position: absolute;
-            bottom: 4vh;
-            left: 6vh;
+            bottom: 3vh;
+            left: 3vh;
             color: #fff;
-            padding-right: 10vh;
+            padding-right: 3vh;
             font-family: "Caveat", cursive;
 
             >span {
                 text-decoration: underline;
-                font-size: 3.5vh;
-                letter-spacing: 0.5vh;
+                font-size: 50px;
+                letter-spacing: 5px;
             }
 
             >button {
                 cursor: pointer;
                 font-family: "Caveat", cursive;
                 margin-top: 1vh;
-                width: 20vh;
-                height: 6vh;
-                font-size: 4vh;
-                border-radius: 2vh;
-                border: 0.25vh solid black;
+                width: 250px;
+                height: 80px;
+                font-size: 50px;
+                border-radius: 20px;
+                border: 3px solid black;
 
 
                 &:hover {
