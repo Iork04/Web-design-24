@@ -44,7 +44,7 @@
     .leftMain {
         z-index: 10;
         display: flex;
-        position: fixed;
+        position: absolute;
         left: 4vh;
         top: 2vh;
         gap: 2vh;
@@ -72,7 +72,7 @@
         border-radius: 4vh;
         z-index: 10;
         display: flex;
-        position: fixed;
+        position: absolute;
         right: 2vh;
         top: 2vh;
         padding: 1vh 2vh;
@@ -122,7 +122,7 @@
 .pageArrow {
     z-index: 10;
     display: flex;
-    position: fixed;
+    position: absolute;
     bottom: 10%;
     right: 5%;
     gap: 40px;

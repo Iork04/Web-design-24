@@ -39,6 +39,7 @@ export default {
     width: 100%;
     height: 100vh;
     display: flex;
+    overflow: hidden;
 
     .openContent {
         transition: 0.5s ease-in-out;
@@ -157,7 +158,6 @@ export default {
             font-weight: 700;
             color: #fff;
             text-shadow: 2px 10px rgba(133, 132, 132, 0.644);
-            /* font-family: "Caveat", cursive; */
         }
 
         .placeType {

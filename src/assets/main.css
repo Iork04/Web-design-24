@@ -11,12 +11,9 @@
 }
 
 body {
-    background: url(./img/lake-river-valley-stream-rapid-ecosystem-563236-pxhere.com.jpg) no-repeat fixed;
+    background: url(./img/1.jpg) no-repeat fixed;
     background-size: cover;
-    overflow: hidden;
+    transition: 0.5s ease-out;
 }
 
-/* .fontShadow {
-    text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0),
-        1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
-} */
+
