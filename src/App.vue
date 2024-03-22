@@ -1,7 +1,8 @@
 <template>
   <rain></rain>
+  <!-- <chatgpt></chatgpt> -->
   <shadowCurtain></shadowCurtain>
-  <Navigation></Navigation>
+  <navigation></navigation>
   <topContent></topContent>
   <updateBackground></updateBackground>
   <div class="test"></div>
@@ -11,13 +12,14 @@
 <script>
 
 import shadowCurtain from "./components/shadowCurtain.vue";
-import Navigation from "./components/Navigation.vue";
+import navigation from "./components/navigation.vue";
 import topContent from "./components/topContent.vue";
 import rain from "./components/rain.vue";
 import updateBackground from "./components/updateBackground.vue"
+import chatgpt from "./components/chatgpt.vue"
 
 export default {
- 
+
   data() {
     return {
 
@@ -26,10 +28,11 @@ export default {
   ,
   components: {
     shadowCurtain,
-    Navigation,
+    navigation,
     topContent,
     rain,
-    updateBackground
+    updateBackground,
+    chatgpt
   }
 }
 
@@ -38,9 +41,9 @@ export default {
 <style>
 .test {
   position: relative;
-  z-index: 99;
+  z-index: 0;
   height: 500vh;
   width: 100%;
   /* background-color: rgb(172, 148, 148); */
 }
-</style>
+</style>./components/navigation.vue

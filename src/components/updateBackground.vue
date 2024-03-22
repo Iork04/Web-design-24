@@ -1,23 +1,31 @@
 <template>
     <div class="updateBackgroundMain">
-        <div class="imgBox" v-for="(image, index) in images" :key="index"
-            :style="{ backgroundImage: 'url(src/assets/img/' + image + ')' }" @click="UpdateBackground(index + 1)">
+        <div class="imgBox" v-for="index in 4" :key="index"
+            :style="{ backgroundImage: `url(${_serverImgUrl}&imgname=${index})` }" @click="UpdateBackground(index)">
         </div>
     </div>
 </template>
 <script>
 export default {
+    mounted() {
+        this.UpdateBackground()
+    },
     data() {
         return {
-            images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+            _number: 1,
         };
+    },
+    computed: {
+        _serverImgUrl() {
+            return `http://127.0.0.1:25001/resource/getImg?number=${this._number}`;
+        }
     },
     methods: {
         UpdateBackground(index) {
             if (index === undefined) {
                 index = Math.floor(Math.random() * 4) + 1;
             }
-            document.body.style.backgroundImage = `url(src/assets/img/${index}.jpg)`;
+            document.body.style.backgroundImage = `url(${this._serverImgUrl}&imgname=${index})`;
         },
     },
 };
@@ -28,10 +36,12 @@ export default {
     display: flex;
     height: 400px;
     width: 100%;
+    z-index: 5;
 
     .imgBox {
         position: relative;
         flex: 1;
+        z-index: 5;
         box-shadow: -5px 0 5px 5px rgba(0, 0, 0, 0.281);
         transition: flex 0.8s;
         display: grid;
