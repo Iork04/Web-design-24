@@ -7,12 +7,21 @@
 </template>
 <script>
 export default {
+    props: {
+        _number: {
+            required: true
+        }
+    },
+    watch: {
+        _number: function (newValue, oldValue) {
+            this.UpdateBackground();
+        }
+    },
     mounted() {
         this.UpdateBackground()
     },
     data() {
         return {
-            _number: 1,
         };
     },
     computed: {

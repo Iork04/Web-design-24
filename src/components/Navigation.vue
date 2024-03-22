@@ -28,8 +28,8 @@
     </div>
 
     <div class="pageArrow">
-        <span><i class='bx bx-chevron-left'></i></span>
-        <span><i class='bx bx-chevron-right'></i></span>
+        <span @click="PrePage"><i class='bx bx-chevron-left'></i></span>
+        <span @click="NextPage"><i class='bx bx-chevron-right'></i></span>
     </div>
 
 
@@ -37,6 +37,12 @@
 
 <script>
 export default {
+    props: {
+        _number: {
+            type: Number,
+            required: true
+        }
+    },
     data() {
         return {
             _searchQuery: '',
@@ -48,11 +54,20 @@ export default {
         }
     },
     methods: {
+        NextPage() {
+            if (this._number == 10)
+                return;
+            window.location.search = `number=${this._number + 1}`;
+        },
+        PrePage() {
+            if (this._number == 1)
+                return;
+            window.location.search = `number=${this._number - 1}`;
+        },
         HandleSearch(event) {
             if (!this._searchQuery.trim())
                 event.preventDefault();
-
-        }
+        },
     }
 }
 </script>

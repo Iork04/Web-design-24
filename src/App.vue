@@ -2,14 +2,15 @@
   <rain></rain>
   <!-- <chatgpt></chatgpt> -->
   <shadowCurtain></shadowCurtain>
-  <navigation></navigation>
-  <topContent></topContent>
-  <updateBackground></updateBackground>
+  <navigation :_number="_number"></navigation>
+  <topContent :_number="_number"></topContent>
+  <updateBackground :_number="_number"></updateBackground>
   <div class="test"></div>
 </template>
 
 
 <script>
+
 
 import shadowCurtain from "./components/shadowCurtain.vue";
 import navigation from "./components/navigation.vue";
@@ -18,14 +19,30 @@ import rain from "./components/rain.vue";
 import updateBackground from "./components/updateBackground.vue"
 import chatgpt from "./components/chatgpt.vue"
 
-export default {
 
+export default {
+  beforeMount() {
+    this.GetInitNumber();
+  },
   data() {
     return {
-
+      _number: 1,
     }
-  }
-  ,
+  },
+  methods: {
+    GetInitNumber() {
+      if (!window.location.search) {
+        // 如果没有查询参数，则添加默认参数
+        const newParams = new URLSearchParams(window.location.search);
+        newParams.set('number', '1');
+        const newUrl = `${window.location.pathname}?${newParams.toString()}`;
+        history.pushState({}, '', newUrl);
+      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const number = urlParams.get('number');
+      this._number = parseInt(number);
+    }
+  },
   components: {
     shadowCurtain,
     navigation,
@@ -35,6 +52,9 @@ export default {
     chatgpt
   }
 }
+
+
+
 
 </script>
 

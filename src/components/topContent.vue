@@ -1,9 +1,10 @@
 <template>
-    <div class="topContentMain" :class="{ 'hideContent': _isHide }">
+    <div class="topContentMain" :class="{ 'hideContent': _isHide, 'hideButton': _isHideButton }">
         <span class="openContent" @click="CloseOpenContent"> <i class='bx bxs-chevron-right'></i></span>
         <div class="topContentLeft">
             <span class="closeContent" @click="CloseOpenContent"><i class='bx bx-x-circle'></i></span>
-            <div class="placeName">{{ _placeName.substring(0, Math.ceil(_placeName.length / 2)) }}</div>
+            <div class="placeName">{{ _placeName.substring(0,
+        Math.ceil(_placeName.length / 2)) }}</div>
             <div class="topContentLeftInfo"><span>{{ _topContentLeftTitle }}</span><br>{{
         _topContentLeftInfo }}<br><button>了解更多</button></div>
         </div>
@@ -15,21 +16,59 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    props: {
+        _number: {
+            required: true
+        }
+    },
+    watch: {
+        _number: function (newValue, oldValue) {
+            this.fetchData();
+        }
+    },
+    mounted() {
+        this.fetchData()
+    },
     data() {
         return {
-            _placeName: "九寨沟",
-            _placeType: "Valley",
-            _topContentLeftTitle: "01、九寨沟",
-            _topContentLeftInfo: "九寨沟是大自然鬼斧神工的杰作，奇峰卓绝，林深茂密，有“翠海、叠瀑、彩林、雪峰、蓝冰、藏情”六绝之美，有“童话世界”美誉，又因水景纷呈有“九寨归来不看水”之说。",
+            _placeName: "",
+            _placeType: "",
+            _topContentLeftTitle: "",
+            _topContentLeftInfo: "",
             _isHide: false,
+            _isHideButton: false,
         }
     },
     methods: {
         CloseOpenContent() {
+            this._isHideButton = !this._isHideButton;
             this._isHide = !this._isHide;
-        }
+        },
+        fetchData() {
+            this._isHide = true;
+            this._isHideButton = false;
+            const textMask = document.querySelector(".topContentLeft");
 
+            const newParams = new URLSearchParams(window.location.search);
+            newParams.set('number', this._number);
+            const newUrl = `${window.location.pathname}?${newParams.toString()}`;
+            history.pushState({}, '', newUrl);
+            axios.get(`http://127.0.0.1:25001/resource/getContent?number=${this._number}`).then(response => {
+                const jsonData = response.data;
+
+                setTimeout(() => {
+                    this._placeName = jsonData.placeName;
+                    this._placeType = jsonData.placeType;
+                    this._topContentLeftTitle = jsonData.topContentLeftTitle;
+                    this._topContentLeftInfo = jsonData.topContentLeftInfo;
+                    this._isHide = false;
+                }, 500);
+            }).catch(error => { console.error('Error fetching data:', error) });
+
+            console.log(textMask)
+        }
     }
 }
 </script>
@@ -58,6 +97,8 @@ export default {
         }
     }
 
+
+
     .topContentLeft {
         transition: 0.5s ease-in-out;
         flex: 1;
@@ -68,10 +109,12 @@ export default {
         justify-content: flex-end;
         align-items: center;
 
+
         -webkit-mask: linear-gradient(#000 0 0),
             linear-gradient(#000 0 0);
         -webkit-mask-clip: text, padding-box;
         -webkit-mask-composite: xor;
+
 
         >span {
             z-index: 11;
@@ -171,12 +214,13 @@ export default {
     }
 }
 
-.hideContent {
-
+.hideButton {
     .openContent {
         left: -34px;
     }
+}
 
+.hideContent {
 
     .topContentLeft {
         opacity: 0;
