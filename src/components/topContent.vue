@@ -21,7 +21,8 @@ export default {
     props: {
         _number: {
             required: true
-        }
+        },
+        _host: { required: true }
     },
     watch: {
         _number: function (newValue, oldValue) {
@@ -55,7 +56,7 @@ export default {
             newParams.set('number', this._number);
             const newUrl = `${window.location.pathname}?${newParams.toString()}`;
             history.pushState({}, '', newUrl);
-            axios.get(`http://127.0.0.1:25001/resource/getContent?number=${this._number}`).then(response => {
+            axios.get(`http://${this._host}/resource/getContent?number=${this._number}`).then(response => {
                 const jsonData = response.data;
 
                 setTimeout(() => {

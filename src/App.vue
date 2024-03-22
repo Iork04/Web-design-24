@@ -2,9 +2,9 @@
   <rain></rain>
   <!-- <chatgpt></chatgpt> -->
   <shadowCurtain></shadowCurtain>
-  <navigation :_number="_number"></navigation>
-  <topContent :_number="_number"></topContent>
-  <updateBackground :_number="_number"></updateBackground>
+  <navigation :_number="_number" :_host="_host"></navigation>
+  <topContent :_number="_number" :_host="_host"></topContent>
+  <updateBackground :_number="_number" :_host="_host"></updateBackground>
   <div class="test"></div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       _number: 1,
+      _host: "127.0.0.1:25001",
     }
   },
   methods: {

@@ -10,7 +10,8 @@ export default {
     props: {
         _number: {
             required: true
-        }
+        },
+        _host: { required: true }
     },
     watch: {
         _number: function (newValue, oldValue) {
@@ -26,7 +27,7 @@ export default {
     },
     computed: {
         _serverImgUrl() {
-            return `http://127.0.0.1:25001/resource/getImg?number=${this._number}`;
+            return `http://${this._host}/resource/getImg?number=${this._number}`;
         }
     },
     methods: {
