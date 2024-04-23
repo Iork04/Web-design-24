@@ -20,23 +20,8 @@ exports.getImg = async (req, res) => {
         // 文件不存在，发送 404 响应
         res.status(404).send("File not found").end();
       } else {
-        // 文件存在，读取并发送文件内容
-        // 获取客户端发送的 If-None-Match 头部信息
-        const ifNoneMatch = req.headers["if-none-match"];
-
-        // 检查资源是否修改
-        const etag = md5File.sync(imagePath);
-
-        if (ifNoneMatch === etag) {
-          // 资源未修改，返回 304 Not Modified 状态码
-          res.status(304).end("The file does not need to be updated!");
-        } else {
-          // 设置资源的 ETag 头部
-          res.setHeader("ETag", etag);
-
-          // 返回资源内容
-          res.sendFile(imagePath);
-        }
+        res.setHeader("Cache-Control", "max-age=864000");
+        res.sendFile(imagePath);
       }
     });
   } catch (error) {

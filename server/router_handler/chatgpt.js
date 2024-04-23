@@ -14,7 +14,12 @@ const instance = axios.create({
 // post数据
 const requestData = {
   model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: "Say this is a test!" }],
+  messages: [
+    {
+      role: "system",
+      content: "现在充当我的助手，主要为我介绍一些四川的景点!",
+    },
+  ],
   temperature: 0.7,
 };
 
@@ -29,6 +34,9 @@ const header = {
 exports.chat = async (req, res) => {
   try {
     requestData.messages = JSON.parse(req.body.toString()).messages;
+
+    console.log(requestData.messages);
+
     const response = await instance.post(
       "https://api.openai.com/v1/chat/completions",
       requestData,

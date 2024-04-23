@@ -1,70 +1,61 @@
 <template>
-  <rain></rain>
-  <!-- <chatgpt></chatgpt> -->
-  <shadowCurtain></shadowCurtain>
-  <navigation :_number="_number" :_host="_host"></navigation>
-  <topContent :_number="_number" :_host="_host"></topContent>
-  <updateBackground :_number="_number" :_host="_host"></updateBackground>
-  <div class="test"></div>
+  <BackGrpimdStyles></BackGrpimdStyles>
+  <Navigation></Navigation>
+  <Content></Content>
+  <BackgroundShow></BackgroundShow>
+  <WebCrawler></WebCrawler>
+  <TheFooter></TheFooter>
 </template>
 
 
 <script>
 
 
-import shadowCurtain from "./components/shadowCurtain.vue";
-import navigation from "./components/navigation.vue";
-import topContent from "./components/topContent.vue";
-import rain from "./components/rain.vue";
-import updateBackground from "./components/updateBackground.vue"
-import chatgpt from "./components/chatgpt.vue"
+  import BackGrpimdStyles from "./components/BackGrpimdStyles/Main.vue";
+  import Navigation from "./components/Navigation/Main.vue"
+  import Content from "./components/Content/ContentMain.vue";
+  import BackgroundShow from "./components/BackgroundShow.vue"
+  import WebCrawler from "./components/WebCrawler/WebCrawlerMain.vue"
+  import TheFooter from "./components/TheFooter.vue"
 
 
-export default {
-  beforeMount() {
-    this.GetInitNumber();
-  },
-  data() {
-    return {
-      _number: 1,
-      _host: "127.0.0.1:25001",
-    }
-  },
-  methods: {
-    GetInitNumber() {
-      if (!window.location.search) {
-        // 如果没有查询参数，则添加默认参数
-        const newParams = new URLSearchParams(window.location.search);
-        newParams.set('number', '1');
-        const newUrl = `${window.location.pathname}?${newParams.toString()}`;
+  export default {
+    beforeMount() {
+      this.GetInitNumber();
+    },
+
+    methods: {
+      GetInitNumber() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (!window.location.search) {
+          urlParams.set('number', '1');
+          const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+          history.pushState({}, '', newUrl);
+        }
+        let number = parseInt(urlParams.get('number'));
+        if (number < 1)
+          number = 1;
+        if (number > this.$store.state.maxPage)
+          number = this.$store.state.maxPage;
+        urlParams.set('number', number);
+        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
         history.pushState({}, '', newUrl);
+        this.$store.state.page = number;
       }
-      const urlParams = new URLSearchParams(window.location.search);
-      const number = urlParams.get('number');
-      this._number = parseInt(number);
+    },
+    components: {
+      BackGrpimdStyles,
+      Navigation,
+      Content,
+      BackgroundShow,
+      WebCrawler,
+      TheFooter
     }
-  },
-  components: {
-    shadowCurtain,
-    navigation,
-    topContent,
-    rain,
-    updateBackground,
-    chatgpt
   }
-}
 
 
 
 
 </script>
 
-<style>
-.test {
-  position: relative;
-  z-index: 0;
-  height: 500vh;
-  width: 100%;
-  /* background-color: rgb(172, 148, 148); */
-}
-</style>./components/navigation.vue
+<style></style>

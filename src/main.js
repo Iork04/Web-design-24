@@ -1,6 +1,14 @@
 import "./assets/main.css";
-
 import { createApp } from "vue";
 import App from "./App.vue";
+import store from "./Store";
 
-const add = createApp(App).mount("#app");
+const app = createApp(App);
+app.use(store);
+
+app.mount("#app");
+
+store.watch(
+  (state) => state.page,
+  (newValue, oldValue) => {}
+);

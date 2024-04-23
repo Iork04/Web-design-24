@@ -2,17 +2,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap");
 @import "boxicons";
 
+@font-face {
+    font-family: LEDFont;
+    font-size: 36px;
+    src: url('./ttf/UnidreamLED.ttf');
+}
+
 * {
     text-decoration: none;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    /* outline: 2px solid red; */
+    outline: 1px solid red;
+}
+
+#app {
+    width: 100%;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
+    height: auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     transition: 0.5s ease-out;
+
 }
